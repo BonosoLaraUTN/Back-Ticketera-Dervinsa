@@ -20,10 +20,12 @@ public class Area extends Base {
 
     @OneToMany(mappedBy = "area",cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
     @Builder.Default
-    @JsonManagedReference
+    @JsonManagedReference("refRequerimientos")
     private Set<Requerimiento> requerimientos = new HashSet<>();
 
-    @OneToOne
-    private Usuario usuario;
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @Builder.Default
+    @JsonManagedReference("refGerentes")
+    private Set<Usuario> gerentes = new HashSet<>();
 
 }

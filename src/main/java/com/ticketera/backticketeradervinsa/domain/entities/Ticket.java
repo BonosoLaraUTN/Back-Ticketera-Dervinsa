@@ -19,12 +19,16 @@ public class Ticket extends Base {
 
     private String titulo;
     private String descripcion;
-    private Date fecha_creacion;
+    private Date fechaCreacion;
     private Estado estado;
 
     @ManyToOne
     @JoinColumn(name = "requerimiento_id")
-    @JsonBackReference
+    @JsonBackReference("refTickReq")
     private Requerimiento requerimiento;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    @JsonBackReference("refTickets")
+    private Usuario usuario;
 
 }
