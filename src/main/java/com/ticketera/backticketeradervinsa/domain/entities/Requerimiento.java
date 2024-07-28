@@ -21,13 +21,13 @@ public class Requerimiento extends  Base{
 
     @OneToMany(mappedBy = "requerimiento",cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
     @Builder.Default
-    @JsonManagedReference
+    @JsonManagedReference("refTickReq")
     private Set<Ticket> tickets = new HashSet<>();
 
 
     @ManyToOne
     @JoinColumn(name = "area_id")
-    @JsonBackReference
+    @JsonBackReference("refRequerimientos")
     private Area area;
 
 }
