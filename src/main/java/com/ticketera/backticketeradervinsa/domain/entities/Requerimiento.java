@@ -1,6 +1,7 @@
 package com.ticketera.backticketeradervinsa.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,13 +22,13 @@ public class Requerimiento extends  Base{
 
     @OneToMany(mappedBy = "requerimiento",cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
     @Builder.Default
-    @JsonManagedReference("refTickReq")
+    @JsonIgnoreProperties({"requerimiento"})
     private Set<Ticket> tickets = new HashSet<>();
 
 
     @ManyToOne
     @JoinColumn(name = "area_id")
-    @JsonBackReference("refRequerimientos")
+    @JsonIgnoreProperties({"requerimientos"})
     private Area area;
 
 }
