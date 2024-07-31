@@ -38,12 +38,22 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
         }
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/porEmail/{email}")
     public ResponseEntity<?> findByEmail(@PathVariable String email) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(service.findUsuarioByEmail(email));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\":\"Error al guardar el cliente. Por favor intente luego\"}");
+        }
+    }
+
+    @Override
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Usuario usuario) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.update(usuario));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\":\"Error al actualizar el cliente. Por favor intente luego\"}");
         }
     }
 }

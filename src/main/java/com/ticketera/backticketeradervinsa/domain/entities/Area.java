@@ -1,5 +1,7 @@
 package com.ticketera.backticketeradervinsa.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,12 +22,12 @@ public class Area extends Base {
 
     @OneToMany(mappedBy = "area",cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
     @Builder.Default
-    @JsonManagedReference("refRequerimientos")
+    @JsonIgnoreProperties({"area"})
     private Set<Requerimiento> requerimientos = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "area",cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @Builder.Default
-    @JsonManagedReference("refGerentes")
+    @JsonIgnore
     private Set<Usuario> gerentes = new HashSet<>();
 
 }

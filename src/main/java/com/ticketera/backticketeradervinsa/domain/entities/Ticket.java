@@ -1,6 +1,7 @@
 package com.ticketera.backticketeradervinsa.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ticketera.backticketeradervinsa.domain.enums.Estado;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -24,11 +25,12 @@ public class Ticket extends Base {
 
     @ManyToOne
     @JoinColumn(name = "requerimiento_id")
-    @JsonBackReference("refTickReq")
+    @JsonIgnoreProperties({"tickets"})
     private Requerimiento requerimiento;
+
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    @JsonBackReference("refTickets")
+    @JsonIgnoreProperties({"tickets"})
     private Usuario usuario;
 
 }
