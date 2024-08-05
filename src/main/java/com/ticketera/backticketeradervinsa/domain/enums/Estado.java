@@ -1,10 +1,15 @@
 package com.ticketera.backticketeradervinsa.domain.enums;
 
 public enum Estado {
+    POR_HACER("Por hacer"),
+    EN_PROGRESO("En progreso"),
+    COMPLETADO("Completado"),
+    RECHAZADO("Rechazado");
 
-    POR_HACER,              //0
-    EN_PROGRESO,            //1
-    COMPLETADO,             //2
-    RECHAZADO,              //3
+    private String estado;
+
+    Estado(String estado) {
+        this.estado = estado;
+    }
 
 }
