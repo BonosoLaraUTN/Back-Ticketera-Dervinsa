@@ -19,6 +19,7 @@ import java.util.Set;
 @Builder
 public class Usuario extends Base {
 
+    private String nombre;
     private String email;
     private String urlPic;
 
