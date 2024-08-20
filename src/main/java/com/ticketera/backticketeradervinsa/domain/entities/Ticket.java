@@ -1,6 +1,7 @@
 package com.ticketera.backticketeradervinsa.domain.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ticketera.backticketeradervinsa.domain.enums.Estado;
 import com.ticketera.backticketeradervinsa.domain.enums.Prioridad;
@@ -21,6 +22,7 @@ public class Ticket extends Base {
 
     private String titulo;
     private String descripcion;
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date fechaCreacion;
     private Estado estado;
     private Prioridad prioridad;
@@ -32,7 +34,7 @@ public class Ticket extends Base {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    @JsonIgnoreProperties({"tickets"})
+    @JsonIgnoreProperties({"tickets","area"})
     private Usuario usuario;
 
 }
