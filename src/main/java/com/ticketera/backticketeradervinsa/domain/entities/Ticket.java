@@ -22,7 +22,6 @@ public class Ticket extends Base {
 
     private String titulo;
     private String descripcion;
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date fechaCreacion;
     private Estado estado;
     private Prioridad prioridad;
@@ -36,5 +35,10 @@ public class Ticket extends Base {
     @JoinColumn(name = "usuario_id")
     @JsonIgnoreProperties({"tickets","area"})
     private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "asignado_id")
+    @JsonIgnoreProperties({"tickets","area"})
+    private Usuario asignado;
 
 }

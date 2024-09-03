@@ -25,8 +25,13 @@ public class Usuario extends Base {
 
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
     @Builder.Default
-    @JsonIgnoreProperties({"usuario"})
+    @JsonIgnoreProperties({"usuario", "asignado"})
     private Set<Ticket> tickets = new HashSet<>();
+
+    @OneToMany(mappedBy = "asignado",cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
+    @Builder.Default
+    @JsonIgnoreProperties({"usuario", "asignado"})
+    private Set<Ticket> ticketsAsignados = new HashSet<>();
 
     @ManyToOne
     @JoinColumn
