@@ -1,7 +1,7 @@
 package com.ticketera.backticketeradervinsa.controllers;
 
-import com.ticketera.backticketeradervinsa.domain.entities.Area;
-import com.ticketera.backticketeradervinsa.servicesimpl.AreaServiceImpl;
+import com.ticketera.backticketeradervinsa.domain.entities.Comentario;
+import com.ticketera.backticketeradervinsa.servicesimpl.ComentarioServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/areas")
-public class AreaController extends BaseControllerImpl<Area, AreaServiceImpl> {
+@RequestMapping(path = "/api/comentarios")
+public class ComentarioController extends BaseControllerImpl<Comentario, ComentarioServiceImpl>{
 
-    public AreaController(AreaServiceImpl service) {
+    public ComentarioController(ComentarioServiceImpl service) {
         super(service);
     }
 
@@ -20,8 +20,8 @@ public class AreaController extends BaseControllerImpl<Area, AreaServiceImpl> {
     @GetMapping("")
     public ResponseEntity<?> getAll() {
         try {
-            List<Area> areas = service.findAll();
-            return ResponseEntity.status(HttpStatus.OK).body(areas);
+            List<Comentario> coms = service.findAll();
+            return ResponseEntity.status(HttpStatus.OK).body(coms);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\":\"Error al obtener todos los usuarios. Por favor intente luego\"}");
         }
@@ -29,9 +29,9 @@ public class AreaController extends BaseControllerImpl<Area, AreaServiceImpl> {
 
     @Override
     @PostMapping("")
-    public ResponseEntity<?> save(@RequestBody Area area) {
+    public ResponseEntity<?> save(@RequestBody Comentario com) {
         try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(service.save(area));
+            return ResponseEntity.status(HttpStatus.CREATED).body(service.save(com));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"error\":\"Error al guardar el cliente. Por favor intente luego\"}");
         }
